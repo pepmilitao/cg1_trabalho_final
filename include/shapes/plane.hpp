@@ -4,11 +4,12 @@
 #include "shape.hpp"
 #include <cmath>
 
-class Plane : public Shape{
-    private:
+class Plane : public Shape {
+      private:
         Vec3 normal;
-    public:
+
+      public:
         Vec3 known_point;
         Plane(Vec3 known_point, Vec3 normal, Color color);
-        bool intercepts(Ray& ray, Interseption& interseption) override;
+        bool intercepts(Ray &ray, Interseption &interseption) override;
 };

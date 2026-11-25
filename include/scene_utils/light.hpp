@@ -2,7 +2,7 @@
 #include "../general_utils/vec3.hpp"
 
 class Light {
-    public:
+      public:
         Vec3 position;
         Vec3 intensity;
         Light();

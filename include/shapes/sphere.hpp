@@ -5,9 +5,9 @@
 #include <cmath>
 
 class Sphere : public Shape {
-    public:
+      public:
         double radius;
         Vec3 center;
         Sphere(double radius, Vec3 center, Color color);
-        bool intercepts(Ray& ray, Interseption& interseption) override;
+        bool intercepts(Ray &ray, Interseption &interseption) override;
 };

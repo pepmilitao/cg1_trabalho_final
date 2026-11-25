@@ -2,7 +2,7 @@
 #include "../general_utils/vec3.hpp"
 
 class Ray {
-    public:
+      public:
         Vec3 origin;
         Vec3 direction;
         Ray(Vec3 origin, Vec3 direction);

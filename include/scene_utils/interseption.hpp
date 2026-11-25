@@ -1,7 +1,7 @@
 #include "../general_utils/vec3.hpp"
 
 class Interseption {
-    public:
+      public:
         Vec3 point;
         Vec3 normal;
         double t;
