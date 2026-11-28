@@ -1,5 +1,4 @@
 #pragma once
-#include "../general_utils/mat3.hpp"
 #include "../general_utils/vec3.hpp"
 #include "../scene_utils/ray.hpp"
 #include "plane.hpp"

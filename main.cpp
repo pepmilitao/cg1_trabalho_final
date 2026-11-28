@@ -57,8 +57,8 @@ int main(int argc, char *argv[]) {
         Vec3 k_plane_f(0.3, 0.3, 0.7);
         Vec3 k_black(0, 0, 0);
         Vec3 center_sphere(0, 0, -1);
-        std::vector<Vec3> vertices{Vec3{0, -0.2, -1}, Vec3{1, 0, -2},
-                                   Vec3{0, -0.5, -1}, Vec3{-1, 0, -2}};
+        std::vector<Vec3> vertices{Vec3{0, 0.4, -1}, Vec3{1, 0.4, -2},
+                                   Vec3{0, -0.1, -1}, Vec3{-1, 0.4, -2}};
         std::vector<std::vector<int>> faces{
             {0, 2, 1},
             {0, 3, 2},
@@ -89,8 +89,8 @@ int main(int argc, char *argv[]) {
         // scene.addObject(sphere);
         // scene.addObject(cilinder);
         // scene.addObject(cone);
-        // scene.addObject(plane_c);
-        // scene.addObject(plane_f);
+        scene.addObject(plane_c);
+        scene.addObject(plane_f);
         scene.addObject(mesh);
         scene.setAmbientLight(Vec3{0.3, 0.3, 0.3});
 
