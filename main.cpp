@@ -1,3 +1,4 @@
+#include "include/general_utils/listmesh.hpp"
 #include "include/general_utils/vec3.hpp"
 
 #include "include/scene_utils/camera.hpp"
@@ -6,6 +7,7 @@
 
 #include "include/shapes/cilinder.hpp"
 #include "include/shapes/cone.hpp"
+#include "include/shapes/mesh.hpp"
 #include "include/shapes/plane.hpp"
 #include "include/shapes/sphere.hpp"
 
@@ -21,6 +23,7 @@
 #include <SDL3/SDL_video.h>
 #include <cmath>
 #include <memory>
+#include <vector>
 
 int main(int argc, char *argv[]) {
         SDL_Window *window;
@@ -54,6 +57,16 @@ int main(int argc, char *argv[]) {
         Vec3 k_plane_f(0.3, 0.3, 0.7);
         Vec3 k_black(0, 0, 0);
         Vec3 center_sphere(0, 0, -1);
+        std::vector<Vec3> vertices{Vec3{0, -0.2, -1}, Vec3{1, 0, -2},
+                                   Vec3{0, -0.5, -1}, Vec3{-1, 0, -2}};
+        std::vector<std::vector<int>> faces{
+            {0, 2, 1},
+            {0, 3, 2},
+            {0, 1, 3},
+            {2, 3, 1}};
+        ListMesh lm(vertices, faces);
+        std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>(
+            lm, Color(k_sphere, k_sphere, k_sphere, 10.0));
         std::shared_ptr<Sphere> sphere = std::make_shared<Sphere>(
             0.4, center_sphere, Color(k_sphere, k_sphere, k_sphere, 10.0));
         std::shared_ptr<Cilinder> cilinder = std::make_shared<Cilinder>(
@@ -71,13 +84,14 @@ int main(int argc, char *argv[]) {
             std::make_shared<Plane>(Vec3{0, 0, -2}, Vec3{0, 0, 1},
                                     Color(k_plane_f, k_black, k_plane_f, 1.0));
         std::shared_ptr<Light> light =
-            std::make_shared<Light>(Vec3{0, 0.6, -0.3}, Vec3{0.7, 0.7, 0.7});
+            std::make_shared<Light>(Vec3{-1, 0.6, -0.3}, Vec3{0.7, 0.7, 0.7});
         scene.addLight(light);
-        scene.addObject(sphere);
-        scene.addObject(cilinder);
-        scene.addObject(cone);
-        scene.addObject(plane_c);
-        scene.addObject(plane_f);
+        // scene.addObject(sphere);
+        // scene.addObject(cilinder);
+        // scene.addObject(cone);
+        // scene.addObject(plane_c);
+        // scene.addObject(plane_f);
+        scene.addObject(mesh);
         scene.setAmbientLight(Vec3{0.3, 0.3, 0.3});
 
         // Main loop
